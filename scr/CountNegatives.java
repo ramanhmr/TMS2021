@@ -9,6 +9,6 @@ public class CountNegatives {
             }
         }
 
-        System.out.println("Inserted numbers include " + negativeCount + " negative values.");
+        System.out.println("Inserted number(s) include " + negativeCount + " negative value(s).");
     }
 }
