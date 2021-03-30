@@ -15,7 +15,7 @@ public class CountNegativesWithExeption {
 
             System.out.println("Inserted number(s) include " + negativeCount + " negative value(s).");
 
-        } catch(NumberFormatException e) {
+        } catch(Exception e) {
 
             System.out.println("Looks like there are not only numbers you've entered. Try another set of arguments.");
 
