@@ -6,7 +6,7 @@ public class Homework {
         System.out.println(max(56, 349));
         System.out.println(average(new int[]{0, -2, 3, -1, 5}));
         System.out.println(max(new int[]{1, 2, 3, 4, 5, 100, 99}));
-        System.out.println(calculateHypotenuse(3,4));
+        System.out.println(calculateHypotenuse(3, 4));
     }
 
     /**
@@ -14,12 +14,11 @@ public class Homework {
      * 2. Дополнительно: сделать проверку если сумма a и b больше чем максимальное значение int то вернуть -1
      **/
     public static int sum(int a, int b) {
-        if(Integer.MAX_VALUE - a < b) return -1;
+        if (Integer.MAX_VALUE - a < b) return -1;
         return a + b;
     }
 
     /**
-     *
      * Метод должен вернуть максимальное значение из двух чисел
      *
      * <p>
@@ -57,7 +56,7 @@ public class Homework {
      **/
     public static int max(int[] array) {
         int currentMax = Integer.MIN_VALUE;
-        for (int value : array){
+        for (int value : array) {
             if (value > currentMax) currentMax = value;
         }
         return currentMax;
@@ -65,7 +64,7 @@ public class Homework {
 
     /**
      * Используя теорему Пифагора, вычислите значение гипотенузы. Квадрат гипотенузы = сумме квадратов катетов
-     *
+     * <p>
      * Example1:
      * 3
      * 4
@@ -77,7 +76,7 @@ public class Homework {
      * return 20
      */
     public static double calculateHypotenuse(int a, int b) {
-        return Math.sqrt(a*a + b*b);
+        return Math.sqrt(a * a + b * b);
     }
 }
 
