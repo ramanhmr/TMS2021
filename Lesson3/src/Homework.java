@@ -18,6 +18,8 @@ public class Homework {
         countDevs(103);
         countDevs(-20);
         countDevs(101);
+        countDevs(3503412);
+        countDevs(-11);
         System.out.println();
         foobar(6);
         foobar(10);
@@ -110,7 +112,9 @@ public class Homework {
     public static void countDevs(int count) {
         // тут пишем логику
         int modulo = count % 10;
-        if (modulo == 1) {
+        if (count % 100 < 20 && count % 100 > 10) {
+            System.out.println(count + " программистов");
+        } else if (modulo == 1) {
             System.out.println(count + " программист");
         } else if (modulo > 1 && modulo < 5) {
             System.out.println(count + " программиста");
