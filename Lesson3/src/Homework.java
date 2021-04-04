@@ -38,24 +38,17 @@ public class Homework {
      */
     private static void printArray() {
         System.out.println("Enter positive integer as a length for array.");
-        Scanner input = new Scanner(System.in);
+        Scanner input;
         int arrayLength;
         int loopCount = 0;
         while (true) {
-            try {
-                loopCount++;
+            loopCount++;
+            input = new Scanner(System.in);
+            if (input.hasNextInt()) {
                 arrayLength = input.nextInt();
-            } catch (Exception e) {
-                if (loopCount == 5) {
-                    System.out.println("Input limit reached. Terminating program.");
-                    System.exit(1);
+                if (arrayLength > 0) {
+                    break;
                 }
-                System.out.println("Invalid input. Try again.");
-                input.nextLine();
-                continue;
-            }
-            if (arrayLength > 0) {
-                break;
             }
             if (loopCount == 5) {
                 System.out.println("Input limit reached. Terminating program.");
@@ -97,8 +90,8 @@ public class Homework {
     public static int calculateCountOfOddElementsInMatrix(int[] ints) {
         // тут пишем логику
         int oddCount = 0;
-        for (int i = 0; i < ints.length; i++) {
-            if (ints[i] % 2 == 1) {
+        for (int anInt : ints) {
+            if (anInt % 2 == 1) {
                 oddCount++;
             }
         }
@@ -134,13 +127,13 @@ public class Homework {
      */
     public static void foobar(int number) {
         // тут пишем логику
-        if (number % 3 == 0) {
-            System.out.print("foo");
+        if (number % 3 == 0 && number % 5 == 0) {
+            System.out.println("book");
+        } else if (number % 3 == 0) {
+            System.out.println("foo");
+        } else if (number % 5 == 0) {
+            System.out.println("bar");
         }
-        if (number % 5 == 0) {
-            System.out.print("bar");
-        }
-        System.out.println();
     }
 
     /**
@@ -149,24 +142,19 @@ public class Homework {
     public static void calculateSumOfDiagonalElements() {
         //пишем логику и выводим результат используя System.out.println
         Random generator = new Random();
-        int dim1 = generator.nextInt(5) + 1;
-        int dim2 = generator.nextInt(5) + 1;
-        int[][] matrix = new int[dim1][dim2];
+        int dim1 = generator.nextInt(5) + 3;
+        int[][] matrix = new int[dim1][dim1];
         for (int i = 0; i < dim1; i++) {
-            for (int j = 0; j < dim2; j++) {
-                matrix[i][j] = generator.nextInt(2001) - 1000;
+            for (int j = 0; j < dim1; j++) {
+                matrix[i][j] = generator.nextInt(21) - 10;
             }
             System.out.println(Arrays.toString(matrix[i]));
         }
-        if (dim1 == 1 && dim2 == 1) {
-            System.out.println(matrix[0][0]);
-        } else if (dim1 == 1) {
-            System.out.println(matrix[0][0] + matrix[0][dim2-1]);
-        } else if (dim2 == 1) {
-            System.out.println(matrix[0][0] + matrix[dim1-1][0]);
-        } else {
-            System.out.println(matrix[0][0] + matrix[0][dim2-1] + matrix[dim1-1][0] + matrix[dim1-1][dim2-1]);
+        int result = 0;
+        for (int i = 0; i < dim1; i++) {
+            result += matrix[i][i];
         }
+        System.out.println(result);
     }
 
 
@@ -196,41 +184,39 @@ public class Homework {
         // тут пишем логику
         System.out.println("Enter two positive integers as dimensions of array.");
         Scanner input = new Scanner(System.in);
-        int dim1, dim2;
+        int[] dim = new int[2];
         int loopCount = 0;
-        while (true) {
-            try {
-                loopCount++;
-                dim1 = input.nextInt();
-                dim2 = input.nextInt();
-            } catch (Exception e) {
-                if (loopCount == 5) {
-                    System.out.println("Input limit reached. Terminating program.");
-                    System.exit(1);
-                }
-                System.out.println("Invalid input. Try again.");
-                input.nextLine();
-                continue;
-            }
-            if (dim1 > 0 && dim2 > 0) {
-                break;
-            }
-            if (loopCount == 5) {
+        for (int i = 0; i < 2; i++) {
+            loopCount++;
+            if (loopCount > 3) {
                 System.out.println("Input limit reached. Terminating program.");
                 System.exit(1);
             }
-            System.out.println("Invalid input. Try again.");
+            if (input.hasNextInt()) {
+                dim[i] = input.nextInt();
+                if (dim[i] <= 0) {
+                    System.out.println("Invalid input.");
+                    i = -1;
+                    input = new Scanner(System.in);
+                    continue;
+                }
+            } else {
+                System.out.println("Invalid input.");
+                i = -1;
+                input = new Scanner(System.in);
+                continue;
+            }
+            loopCount--;
         }
-        System.out.println(dim1+" "+dim2);
-        int[][] matrix = new int[dim1][dim2];
+        int[][] matrix = new int[dim[0]][dim[1]];
         Random generator = new Random();
-        for (int i = 0; i < dim1; i++) {
-            for (int j = 0; j < dim2; j++) {
+        for (int i = 0; i < dim[0]; i++) {
+            for (int j = 0; j < dim[1]; j++) {
                 matrix[i][j] = generator.nextInt(100);
             }
         }
-        for (int i = 0; i < dim1; i++) {
-            for (int j = 0; j < dim2; j++) {
+        for (int i = 0; i < dim[0]; i++) {
+            for (int j = 0; j < dim[1]; j++) {
                 if (matrix[i][j] % 3 == 0) {
                     System.out.print('+');
                 } else if (matrix[i][j] % 7 == 0) {
@@ -250,7 +236,7 @@ public class Homework {
      */
     public static void printPrimeNumbers() {
         int currentNumber = 1;
-        ArrayList<Integer> foundPrimes = new ArrayList<Integer>();
+        ArrayList<Integer> foundPrimes = new ArrayList<>();
         checkingPrimes:
         while (currentNumber < 1000) {
             currentNumber++;
