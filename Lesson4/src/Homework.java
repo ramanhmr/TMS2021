@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Homework {
     public static void main(String[] args) {
@@ -44,8 +41,8 @@ public class Homework {
 //              *        *
 
         char[][] drawingBoard = new char[6][6];
-        for (int i = 0; i < drawingBoard.length; i++) {
-            Arrays.fill(drawingBoard[i], '*');
+        for (char[] chars : drawingBoard) {
+            Arrays.fill(chars, '*');
         }
         triangle(drawingBoard, 'c');
         triangle(drawingBoard, 'b');
@@ -125,6 +122,13 @@ public class Homework {
         checkRepeat(arr);
         System.out.println();
 
+        int[] mas = new int[arrLength];
+        for (int i = 0; i < arrLength; i++) {
+            mas[i] = generate.nextInt(15);
+        }
+        System.out.println(Arrays.toString(mas));
+        checkRepeat(mas);
+        System.out.println();
 //        10) Создаём квадратную матрицу, размер вводим с клавиатуры.
 //        Заполняем случайными числами в диапазоне от 0 до 50. И выводим на консоль(в виде матрицы).
 //        Далее необходимо транспонировать матрицу(1 столбец станет 1-й строкой, 2-й столбец - 2-й строкой и т. д.)
@@ -270,7 +274,7 @@ public class Homework {
 //        Определите какой элемент является в этом массиве максимальным и сообщите индекс его последнего вхождения в массив.
 //        Пример: {3,4,5,62,7,8,4,-5,7,62,5,1} Максимальный элемент 62, индекс его последнего вхождения в массив = 10
     public static void findingMax(int[] mass) {
-        int currentMax = -1;
+        int currentMax = Integer.MIN_VALUE;
         int lastSeen = -1;
         for (int i = 0; i < mass.length; i++) {
             if (mass[i] >= currentMax) {
@@ -278,7 +282,7 @@ public class Homework {
                 lastSeen = i;
             }
         }
-        System.out.println("Максимальный эелемент " + currentMax + ", индекс его последнего вхождения в массив = " + (lastSeen + 1));
+        System.out.println("Максимальный эелемент " + currentMax + ", индекс его последнего вхождения в массив = " + lastSeen);
     }
 
     //        9) Проверить, различны ли все элементы массива, если не различны то вывести элемент повторяющийся
@@ -287,23 +291,56 @@ public class Homework {
 //        Пример: {0,34,46,31,20,1,28}
 //        Массив не имеет повторяющихся элементов
     public static void checkRepeat(ArrayList<Integer> mass) {
-        ArrayList<Integer> repeats = new ArrayList<>();
-        cycle:
+        Set repeats = new HashSet<>();
         for (int i = 0; i < mass.size(); i++) {
             for (int j = i + 1; j < mass.size(); j++) {
-                if (mass.get(i).equals(mass.get(j)) && !repeats.contains(mass.get(i))) {
+                if (mass.get(i).equals(mass.get(j))) {
                     repeats.add(mass.get(i));
-                    continue cycle;
+                    break;
                 }
             }
         }
         if (repeats.isEmpty()) {
             System.out.println("Массив не имеет повторяющихся элементов");
         } else {
-            System.out.print("Массив имеет повторяющиеся эелементы " + repeats.get(0));
-            for (int i = 1; i < repeats.size(); i++) {
-                System.out.print(", " + repeats.get(i));
+            System.out.print("Массив имеет повторяющиеся элементы ");
+            for (Object repeat : repeats) {
+                System.out.print(repeat + ", ");
             }
+            System.out.print("\b\b");
+            System.out.println();
+        }
+    }
+
+    //Этот метод делает то же самое, что и предыдущий, но не использует ArrayList и принимает в себя int[]
+    public static void checkRepeat(int[] mass) {
+        int numberOfRepeats = 0;
+        for (int i = 0; i < mass.length; i++) {
+            for (int j = i + 1; j < mass.length; j++) {
+                if (mass[i] == mass[j]) {
+                    numberOfRepeats++;
+                    if (numberOfRepeats == 1) {
+                        System.out.print("Массив имеет повторяющиеся элементы " + mass[i]);
+                        break;
+                    } else {
+                        boolean alreadyFound = false;
+                        for (int k = 0; k < i; k++) {
+                            if (mass[k] == mass[i]) {
+                                alreadyFound = true;
+                                break;
+                            }
+                        }
+                        if (!alreadyFound) {
+                            System.out.print(", " + mass[i]);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        if (numberOfRepeats == 0) {
+            System.out.println("Массив не имеет повторяющихся элементов");
+        } else {
             System.out.println();
         }
     }
