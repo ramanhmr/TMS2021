@@ -15,11 +15,18 @@ public class Homework {
         System.out.println(fission(-1, 31));
         System.out.println(fission(160, -10));
         System.out.println();
+        for (int i = 3; i <= 24; i += 3) {
+            System.out.println(fission(1, i));
+        }
+        System.out.println();
 
 //        2) Напишите реализацию метода summ(int a, int b), вычисляющий a*b, не пользуясь операцией
 //        умножения, где a и b целые числа, вызовите метод summ  в методе main и распечатайте на консоль.
         System.out.println(summ(7, 6));
         System.out.println(summ(3, 0));
+        System.out.println(summ(-6, -2));
+        System.out.println(summ(-3, 9));
+        System.out.println(summ(3, -1));
         System.out.println();
 
 //        3) Дан двухмерный массив размерностью 4 на 4, необходимо нарисовать четыре треугольника вида
@@ -51,7 +58,7 @@ public class Homework {
 //        Надо вывести на экран сколько в этом числе цифр и положительное оно или отрицательное.
 //        Например, Введите число: 5
 //        "5 - это положительное число, количество цифр = 1"
-        int number = -35515650;
+        int number = -355150;
         describe(number);
         System.out.println();
 
@@ -162,8 +169,11 @@ public class Homework {
 
     public static int summ(int a, int b) {
         int result = 0;
-        for (int i = 0; i < b; i++) {
+        for (int i = 0; i < Math.abs(b); i++) {
             result += a;
+        }
+        if (b < 0) {
+            return -result;
         }
         return result;
     }
@@ -229,8 +239,8 @@ public class Homework {
 
     public static void describe(int number) {
         int figures = 1;
-        int numberCut = number;
-        while (Math.abs(numberCut) / 10 != 0) {
+        int numberCut = Math.abs(number);
+        while (numberCut / 10 != 0) {
             figures++;
             numberCut /= 10;
         }
