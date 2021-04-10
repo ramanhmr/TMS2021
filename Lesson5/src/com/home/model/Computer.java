@@ -31,20 +31,19 @@ public class Computer {
 
     }
 
-    public boolean on() {
+    public void on() {
         if (!burned) {
+            System.out.println("Включение...");
             if (cycles > 0 && activation()) {
                 turnedOn = true;
+                System.out.println("Компьютер включен.");
                 off();
-                return true;
             } else {
                 System.out.println("Компьютер загорелся и сгорел!");
                 burned = true;
-                return false;
             }
         } else {
             System.out.println("Компьютер сгорел!");
-            return false;
         }
     }
 
@@ -66,12 +65,12 @@ public class Computer {
         }
     }
 
-    public boolean off() {
+    public void off() {
         if (turnedOn) {
+            System.out.println("Выключение...");
             turnedOn = false;
+            System.out.println("Компьютер выключен.");
             cycles--;
-            return true;
         }
-        return false;
     }
 }
