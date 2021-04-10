@@ -7,10 +7,8 @@ public class Main {
         Computer pc1 = new Computer("Intel Pentium P5", 16, 2048, 3);
         pc1.describe();
         pc1.on();
-        pc1.describe();
         pc1.on();
         pc1.on();
         pc1.on();
-        pc1.describe();
     }
 }

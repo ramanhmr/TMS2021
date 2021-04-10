@@ -19,16 +19,11 @@ public class Computer {
     }
 
     public void describe() {
-        if (burned) {
-            System.out.println("Этот компьютер сгорел.");
-        } else {
-            System.out.println("Характеристики данного компьютера:");
-            System.out.println("Процессор: " + processor);
-            System.out.println(ram + " Гб оперативной памяти");
-            System.out.println("Жесткий диск на " + hardDrive + " Гб");
-            System.out.println("Оставшийся ресурс полных циклов работы: " + cycles);
-        }
-
+        System.out.println("Характеристики данного компьютера:");
+        System.out.println("Процессор: " + processor);
+        System.out.println(ram + " Гб оперативной памяти");
+        System.out.println("Жесткий диск на " + hardDrive + " Гб");
+        System.out.println("Оставшийся ресурс полных циклов работы: " + cycles);
     }
 
     public void on() {
