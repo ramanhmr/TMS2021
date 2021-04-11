@@ -8,8 +8,8 @@ public class Computer {
     int ram;
     double hardDrive;
     int cycles;
-    boolean turnedOn = false;
-    boolean burned = false;
+    boolean turnedOn;
+    boolean burned;
 
     public Computer(String processor, int ram, double hardDrive, int cycles) {
         this.processor = processor;
@@ -28,14 +28,17 @@ public class Computer {
 
     public void on() {
         if (!burned) {
-            System.out.println("Включение...");
-            if (cycles > 0 && activation()) {
-                turnedOn = true;
-                System.out.println("Компьютер включен.");
-                off();
+            if (turnedOn) {
+                System.out.println("Компьютер уже включен.");
             } else {
-                System.out.println("Компьютер загорелся и сгорел!");
-                burned = true;
+                System.out.println("Включение...");
+                if (cycles > 0 && activation()) {
+                    turnedOn = true;
+                    System.out.println("Компьютер включен.");
+                } else {
+                    System.out.println("Компьютер загорелся и сгорел!");
+                    burned = true;
+                }
             }
         } else {
             System.out.println("Компьютер сгорел!");
@@ -43,20 +46,15 @@ public class Computer {
     }
 
     public boolean activation() {
-        System.out.println("Внимание! Введите 0 или 1");
-        Scanner input;
+        Scanner input = new Scanner(System.in);
+        Random generate = new Random();
+        String rightChoice = Integer.toString(generate.nextInt(2));
         while (true) {
-            input = new Scanner(System.in);
-            if (input.hasNextInt()) {
-                int choice = input.nextInt();
-                if (choice == 0 || choice == 1) {
-                    Random generate = new Random();
-                    int rightChoice = generate.nextInt(2);
-                    return choice == rightChoice;
-
-                }
+            System.out.println("Внимание! Введите 0 или 1");
+            String choice = input.next();
+            if (choice.equals("0") || choice.equals("1")) {
+                return choice.equals(rightChoice);
             }
-            System.out.println("Введите 0 или 1");
         }
     }
 
@@ -65,7 +63,7 @@ public class Computer {
             System.out.println("Выключение...");
             turnedOn = false;
             System.out.println("Компьютер выключен.");
-            cycles--;
+            System.out.println("Осталось " + --cycles + " циклов работы");
         }
     }
 }
