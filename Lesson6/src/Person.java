@@ -34,8 +34,8 @@ public class Person {
     @Setter
     @AllArgsConstructor
     public class Address {
-        private String COUNTRY = "Belarus";
         private String city;
+        private String Country = "Belarus";
 
         public Address(String city) {
             this.city = city;

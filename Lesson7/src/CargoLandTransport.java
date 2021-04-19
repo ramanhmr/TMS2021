@@ -12,15 +12,15 @@ public class CargoLandTransport extends LandTransport implements DescribedTransp
 
     @Override
     public String description() {
-        return "Это " + this.getNumberOfWheels() + " колёсный грузовик марки " + this.getBrand() +
-                ". Грузоподъёмность - " + this.getMaxPayload() + " т. При весе " + this.getMass() +
-                " кг данное транспортное средство может развивать скорость до " + this.getMaxSpeed() +
-                " км/ч при среднем расходе топлива " + this.getFuelConsumptionPer100km() + " л/км. Мощность составляет "
-                + this.getPower() + " лошадиных сил или " + this.getPowerInkW() + " кВт.";
+        return "Это " + getNumberOfWheels() + " колёсный грузовик марки " + getBrand() + ". Грузоподъёмность - "
+                + getMaxPayload() + " т. При весе " + getMass() +
+                " кг данное транспортное средство может развивать скорость до " + getMaxSpeed() +
+                " км/ч при среднем расходе топлива " + getFuelConsumptionPer100km() + " л/км. Мощность составляет "
+                + getPower() + " лошадиных сил или " + getPowerInkW() + " кВт.";
     }
 
-    public boolean canCarryWeight(double weight) {
-        return weight < this.maxPayload;
+    private boolean canCarryWeight(double weight) {
+        return weight < maxPayload;
     }
 
     public String canHandleWeight(double cargoWeight) {

@@ -3,7 +3,7 @@ import lombok.Getter;
 @Getter
 public class MilitaryAirTransport extends AirTransport implements DescribedTransport {
     private boolean hasEjectionSystem;
-    int numberOfMissiles;
+    private int numberOfMissiles;
 
     public MilitaryAirTransport(double power, double maxSpeed, double mass, String brand, double wingsSpan, double minRunwayLength, boolean hasEjectionSystem, int numberOfMissiles) {
         super(power, maxSpeed, mass, brand, wingsSpan, minRunwayLength);
@@ -13,11 +13,11 @@ public class MilitaryAirTransport extends AirTransport implements DescribedTrans
 
     @Override
     public String description() {
-        String result = "Это боевой самолёт марки " + this.getBrand() + " с размахом крыльев " + this.getWingsSpan() +
-                " м. Минимальная требуемая длинна взлетно-посадочной полосы - " + this.getMinRunwayLength() +
-                ". Число ракет - " + this.getNumberOfMissiles() + ". При весе " + this.getMass() +
-                " кг данное транспортное средство может развивать скорость до " + this.getMaxSpeed() +
-                " км/ч. Мощность составляет " + this.getPower() + " лошадиных сил или " + this.getPowerInkW() +
+        String result = "Это боевой самолёт марки " + getBrand() + " с размахом крыльев " + getWingsSpan() +
+                " м. Минимальная требуемая длинна взлетно-посадочной полосы - " + getMinRunwayLength() +
+                ". Число ракет - " + getNumberOfMissiles() + ". При весе " + getMass() +
+                " кг данное транспортное средство может развивать скорость до " + getMaxSpeed() +
+                " км/ч. Мощность составляет " + getPower() + " лошадиных сил или " + getPowerInkW() +
                 " кВт. В конструкцию самолёта ";
         if (hasEjectionSystem) {
             result += "включена система катапультирования пилота.";
@@ -28,7 +28,7 @@ public class MilitaryAirTransport extends AirTransport implements DescribedTrans
     }
 
     public String eject() {
-        if (this.hasEjectionSystem) {
+        if (hasEjectionSystem) {
             return "Катапультирование прошло успешно";
         } else {
             return "У вас нет такой системы";

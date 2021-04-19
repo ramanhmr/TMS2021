@@ -14,16 +14,16 @@ public class LightCar extends LandTransport implements DescribedTransport {
 
     @Override
     public String description() {
-        return "Это " + this.getNumberOfWheels() + " колёсный" + this.getBodyType() + " марки " + this.getBrand() +
-                ". Вместительность - " + this.getNumberOfPassengers() + " человек. При весе " + this.getMass() +
-                " кг данное транспортное средство может развивать скорость до " + this.getMaxSpeed() +
-                " км/ч при среднем расходе топлива " + this.getFuelConsumptionPer100km() + " л/км. Мощность составляет "
-                + this.getPower() + " лошадиных сил или " + this.getPowerInkW() + " кВт.";
+        return "Это " + getNumberOfWheels() + " колёсный" + getBodyType() + " марки " + getBrand() +
+                ". Вместительность - " + getNumberOfPassengers() + " человек. При весе " + getMass() +
+                " кг данное транспортное средство может развивать скорость до " + getMaxSpeed() +
+                " км/ч при среднем расходе топлива " + getFuelConsumptionPer100km() + " л/км. Мощность составляет "
+                + getPower() + " лошадиных сил или " + getPowerInkW() + " кВт.";
     }
 
     public String describeFuelConsumptionInTime(double time) {
-        return "За время " + doubleFormat(time) + " ч, автомобиль " + this.getBrand() +
-                ", двигаясь с максимальной скоростью" + this.getMaxSpeed() + " км/ч, проедет " +
+        return "За время " + doubleFormat(time) + " ч, автомобиль " + getBrand() +
+                ", двигаясь с максимальной скоростью " + getMaxSpeed() + " км/ч, проедет " +
                 doubleFormat(distanceCoveredInTime(time)) + "км и израсходует " + doubleFormat(fuelConsumedInTime(time))
                 + " л топлива.";
     }
@@ -33,7 +33,7 @@ public class LightCar extends LandTransport implements DescribedTransport {
     }
 
     private double fuelConsumedInTime(double timeInHours) {
-        return distanceCoveredInTime(timeInHours) * (this.getFuelConsumptionPer100km() / 100);
+        return distanceCoveredInTime(timeInHours) * (getFuelConsumptionPer100km() / 100);
     }
 
     private String doubleFormat(double number) {

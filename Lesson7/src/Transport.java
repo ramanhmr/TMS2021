@@ -1,7 +1,7 @@
 import lombok.Getter;
 
 @Getter
-public class Transport {
+public class Transport implements DescribedTransport {
     private double power;
     private double maxSpeed;
     private double mass;

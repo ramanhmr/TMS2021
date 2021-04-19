@@ -13,12 +13,12 @@ public class PassengerAirTransport extends AirTransport implements DescribedTran
 
     @Override
     public String description() {
-        String result = "Это пассажирский самолёт марки " + this.getBrand() + " с размахом крыльев " +
-                this.getWingsSpan() + " м. Минимальная требуемая длинна взлетно-посадочной полосы - " +
-                this.getMinRunwayLength() + ". Этот самолет может вместить в себя " + this.getMaxNumberOfPassengers() +
-                " человек. При весе " + this.getMass() + " кг данное транспортное средство может развивать скорость до "
-                + this.getMaxSpeed() + " км/ч. Мощность составляет " + this.getPower() + " лошадиных сил или " +
-                this.getPowerInkW() + " кВт.";
+        String result = "Это пассажирский самолёт марки " + getBrand() + " с размахом крыльев " +
+                getWingsSpan() + " м. Минимальная требуемая длинна взлетно-посадочной полосы - " +
+                getMinRunwayLength() + ". Этот самолет может вместить в себя " + getMaxNumberOfPassengers() +
+                " человек. При весе " + getMass() + " кг данное транспортное средство может развивать скорость до "
+                + getMaxSpeed() + " км/ч. Мощность составляет " + getPower() + " лошадиных сил или " +
+                getPowerInkW() + " кВт.";
         if (hasBusinessClass) {
             result += " В этом самолёте имеются места для пассажиров бизнес класса.";
         } else {
@@ -27,8 +27,8 @@ public class PassengerAirTransport extends AirTransport implements DescribedTran
         return result;
     }
 
-    public boolean canTakePassengers(int numberOfPassengers) {
-        return numberOfPassengers < this.getMaxNumberOfPassengers();
+    private boolean canTakePassengers(int numberOfPassengers) {
+        return numberOfPassengers <= getMaxNumberOfPassengers();
     }
 
     public String canHandlePassengers(int numberOfPassengers) {

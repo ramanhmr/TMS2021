@@ -1,3 +1,5 @@
 public interface DescribedTransport {
-    String description();
+    default String description() {
+        return "No description";
+    }
 }
