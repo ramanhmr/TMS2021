@@ -44,7 +44,7 @@ public class MilitaryOffice {
     public int countRecruitsInAgeRange(int ageFrom, int ageTo) {
         int result = 0;
         for (Person person : personRegistry) {
-            if (person.getAge() >= ageFrom && person.getAge() < ageTo && person.getSex().equals("male")) {
+            if (person.getAge() >= ageFrom && person.getAge() < ageTo && person.getSex().equals(Person.MALE)) {
                 result++;
             }
         }
@@ -56,7 +56,7 @@ public class MilitaryOffice {
     public int countRecruitsWithName(String name) {
         int result = 0;
         for (Person person : personRegistry) {
-            if (person.getName().equals(name) && person.getSex().equals("male")) {
+            if (person.getName().equals(name) && person.getSex().equals(Person.MALE)) {
                 result++;
             }
         }
@@ -64,6 +64,6 @@ public class MilitaryOffice {
     }
 
     private boolean recruitable(Person person) {
-        return person.getAge() >= SERVICE_MIN_AGE && person.getAge() < SERVICE_UNTIL_AGE && person.getSex().equals("male");
+        return person.getAge() >= SERVICE_MIN_AGE && person.getAge() < SERVICE_UNTIL_AGE && person.getSex().equals(Person.MALE);
     }
 }
