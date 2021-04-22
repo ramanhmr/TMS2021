@@ -1,13 +1,11 @@
 package by.teachmeskills.robot.hands;
 
-public class SamsungHand implements IHand {
-    private int price;
+import by.teachmeskills.robot.abs.RobotParts;
+
+public class SamsungHand extends RobotParts implements IHand {
 
     public SamsungHand(int price) {
-        this.price = price;
-    }
-
-    public SamsungHand() {
+        super(price);
     }
 
     @Override

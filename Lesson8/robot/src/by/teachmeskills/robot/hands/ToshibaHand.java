@@ -1,13 +1,11 @@
 package by.teachmeskills.robot.hands;
 
-public class ToshibaHand implements IHand {
-    private int price;
+import by.teachmeskills.robot.abs.RobotParts;
+
+public class ToshibaHand extends RobotParts implements IHand {
 
     public ToshibaHand(int price) {
-        this.price = price;
-    }
-
-    public ToshibaHand() {
+        super(price);
     }
 
     @Override

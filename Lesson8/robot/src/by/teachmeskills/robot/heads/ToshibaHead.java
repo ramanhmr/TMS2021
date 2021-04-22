@@ -1,13 +1,11 @@
 package by.teachmeskills.robot.heads;
 
-public class ToshibaHead implements IHead {
-    private int price;
+import by.teachmeskills.robot.abs.RobotParts;
+
+public class ToshibaHead extends RobotParts implements IHead {
 
     public ToshibaHead(int price) {
-        this.price = price;
-    }
-
-    public ToshibaHead() {
+        super(price);
     }
 
     @Override

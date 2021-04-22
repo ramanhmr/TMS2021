@@ -36,23 +36,19 @@ public class Run {
         legs[1] = new SamsungLeg(4000);
         legs[2] = new ToshibaLeg(3760);
         IRobot[] robots = new IRobot[3];
-        for (int i = 0; i < 3; i++) {
-            robots[i] = new Robot(heads[i], hands[i], legs[i]);
-        }
-        for (IRobot robot : robots) {
-            robot.action();
-            System.out.println();
-        }
         int maxPrice = Integer.MIN_VALUE;
         int maxPriceIndex = -1;
         for (int i = 0; i < 3; i++) {
+            robots[i] = new Robot(heads[i], hands[i], legs[i]);
+            robots[i].action();
+            System.out.println();
             if (robots[i].getPrice() > maxPrice) {
                 maxPriceIndex = i;
                 maxPrice = robots[i].getPrice();
             }
         }
         Robot maxPriceRobot = (Robot) robots[maxPriceIndex];
-        System.out.printf("Самый дорогой робот состоит из головы %s, рук %s и ног %s \n", maxPriceRobot.getHead().getClass().getSimpleName(),
+        System.out.printf("Самый дорогой робот стоит %d у.е. и состоит из головы %s, рук %s и ног %s \n", maxPriceRobot.getPrice(), maxPriceRobot.getHead().getClass().getSimpleName(),
                 maxPriceRobot.getHand().getClass().getSimpleName(), maxPriceRobot.getLeg().getClass().getSimpleName());
     }
 }

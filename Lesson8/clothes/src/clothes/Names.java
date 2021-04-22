@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum Names {
-    IVAN("Иван"), ARKADY("Аркадий"), FEDOR("Фёдор");
+    IVAN("Иван"), ARKADY("Аркадий"), FEDOR("Фёдор"), SLAVA("Вячеслав"), YAN("Ян");
 
     private final String name;
 

@@ -1,13 +1,11 @@
 package by.teachmeskills.robot.heads;
 
-public class SamsungHead implements IHead {
-    private int price;
+import by.teachmeskills.robot.abs.RobotParts;
+
+public class SamsungHead extends RobotParts implements IHead {
 
     public SamsungHead(int price) {
-        this.price = price;
-    }
-
-    public SamsungHead() {
+        super(price);
     }
 
     @Override

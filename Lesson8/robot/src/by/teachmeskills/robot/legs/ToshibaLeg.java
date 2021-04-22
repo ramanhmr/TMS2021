@@ -1,13 +1,11 @@
 package by.teachmeskills.robot.legs;
 
-public class ToshibaLeg implements ILeg {
-    private int price;
+import by.teachmeskills.robot.abs.RobotParts;
+
+public class ToshibaLeg extends RobotParts implements ILeg {
 
     public ToshibaLeg(int price) {
-        this.price = price;
-    }
-
-    public ToshibaLeg() {
+        super(price);
     }
 
     @Override

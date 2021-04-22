@@ -1,13 +1,11 @@
 package by.teachmeskills.robot.legs;
 
-public class SonyLeg implements ILeg {
-    private int price;
+import by.teachmeskills.robot.abs.RobotParts;
+
+public class SonyLeg extends RobotParts implements ILeg {
 
     public SonyLeg(int price) {
-        this.price = price;
-    }
-
-    public SonyLeg() {
+        super(price);
     }
 
     @Override

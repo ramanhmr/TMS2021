@@ -1,13 +1,11 @@
 package by.teachmeskills.robot.heads;
 
-public class SonyHead implements IHead {
-    private int price;
+import by.teachmeskills.robot.abs.RobotParts;
+
+public class SonyHead extends RobotParts implements IHead {
 
     public SonyHead(int price) {
-        this.price = price;
-    }
-
-    public SonyHead() {
+        super(price);
     }
 
     @Override

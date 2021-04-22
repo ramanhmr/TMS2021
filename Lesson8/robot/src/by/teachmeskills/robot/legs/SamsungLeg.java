@@ -1,13 +1,11 @@
 package by.teachmeskills.robot.legs;
 
-public class SamsungLeg implements ILeg {
-    private int price;
+import by.teachmeskills.robot.abs.RobotParts;
+
+public class SamsungLeg extends RobotParts implements ILeg {
 
     public SamsungLeg(int price) {
-        this.price = price;
-    }
-
-    public SamsungLeg() {
+        super(price);
     }
 
     @Override

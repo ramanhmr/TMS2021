@@ -2,7 +2,7 @@ import lombok.SneakyThrows;
 
 public class Spaceport {
     @SneakyThrows
-    public static void launch(IStart rocket) {
+    public void launch(IStart rocket) {
         if (!rocket.check()) {
             System.out.println("Предстартовая проверка провалена");
             return;
