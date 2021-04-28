@@ -31,16 +31,6 @@ public class Tasks12 {
     private static String replaceChars(String string) {
         int posToBeReplaced = 3;
         int posToReplace = 0;
-        char[] arrayFromString = string.toCharArray();
-        char replaceable = arrayFromString[posToBeReplaced];
-        if (arrayFromString[posToReplace] != replaceable) {
-            for (int i = 0; i < arrayFromString.length; i++) {
-                if (arrayFromString[i] == replaceable) {
-                    arrayFromString[i] = arrayFromString[posToReplace];
-                }
-            }
-            return new String(arrayFromString);
-        }
-        return string;
+        return string.replace(string.charAt(posToBeReplaced), string.charAt(posToReplace));
     }
 }
