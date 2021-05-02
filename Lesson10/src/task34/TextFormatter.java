@@ -6,7 +6,10 @@ import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public abstract class TextFormatter {
+public final class TextFormatter {
+    private TextFormatter() {
+    }
+
     private static List<String> identifyWords(String string) {
         return Pattern.compile("[\\wа-яА-Я]+").matcher(string).results().map(MatchResult::group).collect(Collectors.toList());
     }
