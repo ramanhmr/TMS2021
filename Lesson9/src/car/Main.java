@@ -9,7 +9,7 @@ public class Main {
             try {
                 car.start();
             } catch (FailedToStartException e) {
-                System.out.println("\u001B[31m" + e.getMessage() + "\u001B[0m");
+                System.err.println(e.getMessage());
             }
         }
     }
