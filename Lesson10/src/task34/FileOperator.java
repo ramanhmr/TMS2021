@@ -1,22 +1,24 @@
 package task34;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class FileOperator {
-    static ArrayList<String> readFile(File file) {
-        ArrayList<String> result = null;
+public final class FileOperator {
+
+    private FileOperator() {
+    }
+
+    public static List<String> readFile(File file) {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            result = (ArrayList<String>) reader.lines().collect(Collectors.toList());
+            return reader.lines().collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return result;
+        return null;
     }
 
-    static void createFile(List<String> strings, String file) {
+    public static void writeDataToFile(List<String> strings, String file) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             for (String string : strings) {
                 writer.append(string).append(System.lineSeparator());

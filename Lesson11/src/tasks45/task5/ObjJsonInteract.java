@@ -1,11 +1,14 @@
-package task5;
+package tasks45.task5;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
 
-public abstract class ObjJsonInteract {
+public final class ObjJsonInteract {
+    private ObjJsonInteract() {
+    }
+
     static void writeObjToJson(File file, Object obj) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
